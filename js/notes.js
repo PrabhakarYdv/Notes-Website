@@ -1,7 +1,7 @@
 const addBtn = document.getElementById("add-btn")
 const main = document.querySelector(".main")
-const deleteBtn = document.getElementById(".del")
-const saveBtn = document.getElementById(".save")
+const deleteBtn = document.querySelector(".del")
+const saveBtn = document.querySelector(".save")
 // Global decalre beacuse i have to perform save and delete also from these variable
 
 const chnageBGC = () => {
@@ -27,19 +27,19 @@ const addNote = (textData = "") => {
     chnageBGC()
     let html = `<div class="notes-container">
                     <div class="toolbar">
-                    <i id="save" class="fa-solid fa-floppy-disk"></i>
-                    <i id="del" class="fa-solid fa-trash"></i>
+                    <i class="fa-solid fa-floppy-disk save"></i>
+                    <i class="fa-solid fa-trash del"></i>
                 </div>
-                <textarea> ${textData} </textarea>
+                <textarea>${textData}</textarea>
                 </div>`;
     const note = document.createElement("div")
     note.innerHTML = html
     main.appendChild(note)
     saveNotes()
 
-    note.querySelector("#save").addEventListener("click", saveNotes)
+    note.querySelector(".save").addEventListener("click", saveNotes)
 
-    note.querySelector("#del").addEventListener("click", () => {
+    note.querySelector(".del").addEventListener("click", () => {
         note.remove()
         saveNotes()
 
@@ -53,7 +53,7 @@ const addNote = (textData = "") => {
     })
 }
 
-addBtn.addEventListener("click", addNote)
+addBtn.addEventListener("click", ()=>addNote(""))
 
 
 const getNotes = () => {
